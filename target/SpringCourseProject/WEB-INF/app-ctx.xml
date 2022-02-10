@@ -77,6 +77,7 @@
         <security:logout logout-success-url="/"/>
         <security:remember-me/>
     </security:http>
+    <!---->
     <security:authentication-manager>
         <security:authentication-provider>
             <security:jdbc-user-service data-source-ref="dataSource"
@@ -87,4 +88,5 @@
 
         </security:authentication-provider>
     </security:authentication-manager>
+
 </beans>
