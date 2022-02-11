@@ -1,5 +1,6 @@
 package courseProject.controllers;
 
+import courseProject.persistence.dao.services.interfaces.RoleService;
 import courseProject.persistence.dao.services.interfaces.UserDetailsService;
 import courseProject.persistence.model.Role;
 import courseProject.persistence.model.User;
@@ -15,6 +16,8 @@ import java.util.Collections;
 public class UserController {
     @Autowired
     private UserDetailsService userDetailsService;
+    @Autowired
+    private RoleService roleService;
 
     @GetMapping(value = "/registration")
     public String registration() {
@@ -26,8 +29,10 @@ public class UserController {
         User user = new User();
         user.setLogin(request.getParameter("login"));
         user.setPassword("{noop}" + request.getParameter("password"));
-        user.setRoles(Collections.singletonList(new Role(2L, "ROLE_USER", user.getLogin())));
+        Role role = new Role("ROLE_USER", user.getLogin());
+        user.setRoles(Collections.singletonList(role));
         userDetailsService.addUser(user);
+        roleService.addRole(role);
         return "redirect:/login";
     }
 }
