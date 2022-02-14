@@ -38,6 +38,10 @@ public class JournalServiceImpl implements JournalService {
         return journalRepository.findJournalByGenre(genre);
     }
 
+    @Override
+    public List<Journal> findAllByUserName(String userName) {
+        return journalRepository.findAllByUserName(userName);
+    }
 
     @Autowired
     public void setJournalRepository(JournalRepository journalRepository) {

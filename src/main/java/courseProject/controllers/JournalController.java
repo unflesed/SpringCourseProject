@@ -3,6 +3,7 @@ package courseProject.controllers;
 import courseProject.persistence.dao.services.interfaces.JournalService;
 import courseProject.persistence.model.Journal;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -19,6 +20,15 @@ public class JournalController {
     public ModelAndView listAllJournals(ModelAndView modelAndView) throws InterruptedException {
         modelAndView.addObject("journals", journalService.findAll());
         modelAndView.setViewName("journals");
+        return modelAndView;
+    }
+
+    @GetMapping(value = "subscriptions")
+    public ModelAndView listAllSubscriptions(ModelAndView modelAndView) throws InterruptedException {
+        String userName;
+        userName = SecurityContextHolder.getContext().getAuthentication().getName();
+        modelAndView.addObject("journals", journalService.findAllByUserName(userName));
+        modelAndView.setViewName("subscriptions");
         return modelAndView;
     }
 

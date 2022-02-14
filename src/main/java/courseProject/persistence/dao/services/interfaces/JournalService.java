@@ -16,4 +16,5 @@ public interface JournalService {
 
     List<Journal> findJournalByGenre(String genre);
 
+    List<Journal> findAllByUserName(String userName);
 }

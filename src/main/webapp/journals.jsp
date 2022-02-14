@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <html>
 <head>
     <title>Journals</title>
@@ -27,12 +28,17 @@
             <td>${journal.genre}</td>
             <td>${journal.periodicity}</td>
             <td>${journal.cost}</td>
-            <td><a href="/journal/remove/${journal.id}">Remove</a></td>
+            <td>
+                <sec:authorize access="hasAuthority('ROLE_ADMIN')">
+                <a href="/journal/remove/${journal.id}">Remove</a>
+                </sec:authorize>
+            </td>
         </tr>
     </c:forEach>
     </tbody>
 </table>
-
+<br/>
+<a href="/journal/subscriptions/">My subscriptions</a>
 <br/>
 
 <h2>To add new journal press "Add" button</h2>

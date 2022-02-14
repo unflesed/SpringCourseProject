@@ -71,7 +71,7 @@
 
         <security:intercept-url pattern="/**" access="permitAll"/>
         <security:form-login login-page="/login" username-parameter="username" password-parameter="password"
-                             default-target-url="/" always-use-default-target="false" authentication-failure-url="/login?error=true"/>
+                             default-target-url="/journal/all" always-use-default-target="false" authentication-failure-url="/login?error=true"/>
         <security:form-login
                 default-target-url="/" always-use-default-target="false" authentication-failure-url="/login?error=true"/>
         <security:logout logout-success-url="/"/>

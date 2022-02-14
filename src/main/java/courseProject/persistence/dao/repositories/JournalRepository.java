@@ -20,4 +20,8 @@ public interface JournalRepository extends CrudRepository<Journal, Long> {
             "  where j.id = ?1",
             nativeQuery = true)
     void updateJournal(long id, String journalName, String genre, String periodicity, int cost);
+
+    @Query(value = "SELECT * from journal j join users_journal uj on j.id = uj.journal_id where uj.username = ?1",
+            nativeQuery = true)
+    List<Journal> findAllByUserName(String userName);
 }

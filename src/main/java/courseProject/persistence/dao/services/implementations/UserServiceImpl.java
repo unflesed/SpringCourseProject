@@ -6,6 +6,8 @@ import courseProject.persistence.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserDetailsService {
 
@@ -15,6 +17,7 @@ public class UserServiceImpl implements UserDetailsService {
     public User addUser(User user) {
         return userRepository.save(user);
     }
+
     @Autowired
     public void setUserRepository(UserRepository userRepository) {
         this.userRepository = userRepository;
