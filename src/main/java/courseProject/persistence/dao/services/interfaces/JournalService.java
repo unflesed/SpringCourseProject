@@ -21,4 +21,6 @@ public interface JournalService {
     void subscribeJournal(String userName, Long idJournal);
 
     boolean checkSubscription(String userName, Long idJournal);
+
+    void unSubscribeJournal(String userName, Long idJournal);
 }

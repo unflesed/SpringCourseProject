@@ -60,6 +60,11 @@ public class JournalServiceImpl implements JournalService {
         return false;
     }
 
+    @Override
+    public void unSubscribeJournal(String userName, Long idJournal) {
+        journalRepository.unSubscribeJournal(userName, idJournal);
+    }
+
     @Autowired
     public void setJournalRepository(JournalRepository journalRepository) {
         this.journalRepository = journalRepository;

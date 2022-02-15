@@ -79,6 +79,14 @@ public class JournalController {
         return "subscribed";
     }
 
+    @PostMapping(value = "/unsubscribe/{id}")
+    public String unSubscribe(@PathVariable long id) {
+        String userName;
+        userName = SecurityContextHolder.getContext().getAuthentication().getName();
+        journalService.unSubscribeJournal(userName, id);
+        return "unsubscribed";
+    }
+
     @GetMapping(value = "/popup")
     public String popup(){
         return "popup";

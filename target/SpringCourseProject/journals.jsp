@@ -18,7 +18,6 @@
         <th>Genre</th>
         <th>Periodicity</th>
         <th>Cost</th>
-        <th>Subscription</th>
     </tr>
     </thead>
     <tbody>
@@ -33,6 +32,11 @@
             <td>
                 <form action="/journal/subscribe/${journal.id}" method="post">
                     <input type="submit" name="button" value="Subscribe"/>
+                </form>
+            </td>
+            <td>
+                <form action="/journal/unsubscribe/${journal.id}" method="post">
+                    <input type="submit" name="button" value="Unsubscribe"/>
                 </form>
             </td>
             <td>
