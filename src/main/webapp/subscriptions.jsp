@@ -13,6 +13,6 @@
 </c:forEach>
 
 <button type="button"
-        onclick='window.location="all"'>back</button>
+        onclick='window.location.pathname="journal/all"'>back</button>
 </body>
 </html>

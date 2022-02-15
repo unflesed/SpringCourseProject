@@ -17,6 +17,8 @@ public class Journal {
     private String genre;
     private String periodicity;
     private int cost;
+    @Transient
+    private boolean subscription;
     @ManyToMany(mappedBy = "journals")
     @Transient
     private List<User> users = new ArrayList<>();

@@ -24,4 +24,12 @@ public interface JournalRepository extends CrudRepository<Journal, Long> {
     @Query(value = "SELECT * from journal j join users_journal uj on j.id = uj.journal_id where uj.username = ?1",
             nativeQuery = true)
     List<Journal> findAllByUserName(String userName);
+
+    @Modifying
+    @Query(value = "INSERT INTO users_journal(username, journal_id) VALUES (?1, ?2)",
+            nativeQuery = true)
+    void subscribeJournal(String userName, Long idJournal);
+
+    Journal getJournalById(Long id);
+
 }

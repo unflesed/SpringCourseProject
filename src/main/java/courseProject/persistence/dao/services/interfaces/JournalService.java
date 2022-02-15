@@ -17,4 +17,8 @@ public interface JournalService {
     List<Journal> findJournalByGenre(String genre);
 
     List<Journal> findAllByUserName(String userName);
+
+    void subscribeJournal(String userName, Long idJournal);
+
+    boolean checkSubscription(String userName, Long idJournal);
 }

@@ -68,4 +68,19 @@ public class JournalController {
 
         return modelAndView;
     }
+    @PostMapping(value = "/subscribe/{id}")
+    public String subscribe(@PathVariable long id) {
+        String userName;
+        userName = SecurityContextHolder.getContext().getAuthentication().getName();
+        if (!journalService.checkSubscription(userName, id)) {
+            journalService.subscribeJournal(userName, id);
+            return "redirect:/journal/all";
+        }
+        return "subscribed";
+    }
+
+    @GetMapping(value = "/popup")
+    public String popup(){
+        return "popup";
+    }
 }

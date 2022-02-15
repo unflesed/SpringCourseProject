@@ -43,6 +43,23 @@ public class JournalServiceImpl implements JournalService {
         return journalRepository.findAllByUserName(userName);
     }
 
+    @Override
+    public void subscribeJournal(String userName, Long idJournal) {
+        journalRepository.subscribeJournal(userName, idJournal);
+    }
+
+    @Override
+    public boolean checkSubscription(String userName, Long idJournal) {
+        List<Journal> journalsByUserName = journalRepository.findAllByUserName(userName);
+        Journal journal = journalRepository.getJournalById(idJournal);
+        for (Journal j: journalsByUserName) {
+            if (j.equals(journal)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     @Autowired
     public void setJournalRepository(JournalRepository journalRepository) {
         this.journalRepository = journalRepository;
