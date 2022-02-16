@@ -9,6 +9,6 @@
 <h1>You've already subscribed on this journal! </h1>
 
 <button type="button"
-        onclick='window.location="all"'>back</button>
+        onclick='window.location.pathname="journal/all"'>back</button>
 </body>
 </html>

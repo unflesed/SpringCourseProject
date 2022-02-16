@@ -5,6 +5,17 @@
 <html>
 <head>
     <title>Journals</title>
+    <style>
+        div.block{
+            display:inline-block;
+            padding:5px;
+            margin:5px;
+        }
+        div.block:hover{
+            margin:5px;
+            padding:5px;
+        }
+    </style>
 </head>
 <body>
 
@@ -49,7 +60,12 @@
     </tbody>
 </table>
 <br/>
-<a href="/journal/subscriptions/">My subscriptions</a>
+<div class="block">
+    <a href="/journal/subscriptions/">My subscriptions</a>
+</div>
+<div class="block">
+    <a href="/profile">My profile</a>
+</div>
 <br/>
 
 <h2>To add new journal press "Add" button</h2>
