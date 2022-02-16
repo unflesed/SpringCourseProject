@@ -14,6 +14,11 @@ public class ProfileServiceImpl implements ProfileService {
         return profileRepository.findProfileByUserName(userName);
     }
 
+    @Override
+    public void updateProfile(String userName, String firstName, String lastName, String phone, String email) {
+        profileRepository.updateProfile(userName, firstName, lastName, phone, email);
+    }
+
     @Autowired
     public void setProfileRepository(ProfileRepository profileRepository) {
         this.profileRepository = profileRepository;
