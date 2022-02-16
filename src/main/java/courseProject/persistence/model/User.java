@@ -10,13 +10,14 @@ import java.util.Collection;
 import java.util.List;
 
 @Data
-@Entity(name = "users")
+@Entity
+@Table(name = "users")
 public class User implements UserDetails {
     @Id
     @Column(name = "username")
     private String login;
     private String password;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "profile_id")
     private Profile profile;
     @OneToMany

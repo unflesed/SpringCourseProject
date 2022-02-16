@@ -1,6 +1,7 @@
 package courseProject.controllers;
 
 import courseProject.persistence.dao.services.interfaces.ProfileService;
+import courseProject.persistence.dao.services.interfaces.UserDetailsService;
 import courseProject.persistence.model.Profile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,6 +17,8 @@ import org.springframework.web.servlet.ModelAndView;
 public class ProfileController {
     @Autowired
     ProfileService profileService;
+    @Autowired
+    UserDetailsService userDetailsService;
     @GetMapping(value = "")
     public ModelAndView profile(ModelAndView modelAndView) {
         String userName;
@@ -33,7 +36,13 @@ public class ProfileController {
                                       ModelAndView modelAndView) {
         String userName;
         userName = SecurityContextHolder.getContext().getAuthentication().getName();
-        profileService.updateProfile(userName, firstName, lastName, phone, email);
+        Profile profile = userDetailsService.getUserByLogin(userName).getProfile();
+        if (profile == null) {
+            profile = profileService.saveProfile(firstName, lastName, phone, email);
+            userDetailsService.updateUser(userName, profile.getId());
+        }else {
+            profileService.updateProfile(userName, firstName, lastName, phone, email);
+        }
         modelAndView.setViewName("redirect:/profile");
 
         return modelAndView;

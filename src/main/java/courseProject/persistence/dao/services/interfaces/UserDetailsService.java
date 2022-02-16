@@ -2,8 +2,10 @@ package courseProject.persistence.dao.services.interfaces;
 
 import courseProject.persistence.model.User;
 
-import java.util.List;
-
 public interface UserDetailsService {
     User addUser(User user);
+
+    User getUserByLogin(String userName);
+
+    void updateUser(String userName, Long profileId);
 }

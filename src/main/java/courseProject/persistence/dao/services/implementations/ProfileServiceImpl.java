@@ -19,6 +19,13 @@ public class ProfileServiceImpl implements ProfileService {
         profileRepository.updateProfile(userName, firstName, lastName, phone, email);
     }
 
+    @Override
+    public Profile saveProfile(String firstName, String lastName, String phone, String email) {
+        Profile profile = new Profile(firstName, lastName, phone, email);
+
+        return profileRepository.save(profile);
+    }
+
     @Autowired
     public void setProfileRepository(ProfileRepository profileRepository) {
         this.profileRepository = profileRepository;

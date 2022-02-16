@@ -6,8 +6,6 @@ import courseProject.persistence.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class UserServiceImpl implements UserDetailsService {
 
@@ -16,6 +14,16 @@ public class UserServiceImpl implements UserDetailsService {
     @Override
     public User addUser(User user) {
         return userRepository.save(user);
+    }
+
+    @Override
+    public User getUserByLogin(String userName) {
+        return userRepository.getUserByLogin(userName);
+    }
+
+    @Override
+    public void updateUser(String userName, Long profileId) {
+        userRepository.updateUser(userName, profileId);
     }
 
     @Autowired
