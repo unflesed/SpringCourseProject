@@ -37,4 +37,8 @@ public interface JournalRepository extends CrudRepository<Journal, Long> {
             nativeQuery = true)
     void unSubscribeJournal(String userName, Long idJournal);
 
+    @Modifying
+    @Query(value = "DELETE FROM users_journal where journal_id = ?1",
+            nativeQuery = true)
+    void unSubscribeAllUsers(Long idJournal);
 }

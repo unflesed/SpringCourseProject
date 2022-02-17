@@ -19,7 +19,7 @@ public class ProfileController {
     ProfileService profileService;
     @Autowired
     UserDetailsService userDetailsService;
-    @GetMapping(value = "")
+    @GetMapping(value = "/my")
     public ModelAndView profile(ModelAndView modelAndView) {
         String userName;
         userName = SecurityContextHolder.getContext().getAuthentication().getName();
@@ -43,7 +43,7 @@ public class ProfileController {
         }else {
             profileService.updateProfile(userName, firstName, lastName, phone, email);
         }
-        modelAndView.setViewName("redirect:/profile");
+        modelAndView.setViewName("redirect:/profile/my");
 
         return modelAndView;
     }

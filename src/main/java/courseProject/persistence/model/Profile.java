@@ -20,10 +20,10 @@ public class Profile {
     public Profile() {
     }
 
-    public Profile(String firstName, String lastName, String email, String phone) {
+    public Profile(String firstName, String lastName, String phone, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.email = email;
         this.phone = phone;
+        this.email = email;
     }
 }
