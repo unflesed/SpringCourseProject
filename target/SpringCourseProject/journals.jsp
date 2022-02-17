@@ -64,7 +64,7 @@
     <a href="/journal/subscriptions/">My subscriptions</a>
 </div>
 <div class="block">
-    <a href="/profile">My profile</a>
+    <a href="/profile/my">My profile</a>
 </div>
 <br/>
 

@@ -65,6 +65,11 @@ public class JournalServiceImpl implements JournalService {
         journalRepository.unSubscribeJournal(userName, idJournal);
     }
 
+    @Override
+    public void unSubscribeAllUsers(Long idJournal) {
+        journalRepository.unSubscribeAllUsers(idJournal);
+    }
+
     @Autowired
     public void setJournalRepository(JournalRepository journalRepository) {
         this.journalRepository = journalRepository;

@@ -4,7 +4,6 @@
        xmlns:tx="http://www.springframework.org/schema/tx"
        xmlns="http://www.springframework.org/schema/beans"
        xmlns:aop="http://www.springframework.org/schema/aop"
-       xmlns:cache="http://www.springframework.org/schema/cache"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:security="http://www.springframework.org/schema/security"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
@@ -12,7 +11,6 @@
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
-       http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd
        http://www.springframework.org/schema/security
        https://www.springframework.org/schema/security/spring-security.xsd">
     <import resource="spring-database.xml"/>
@@ -33,41 +31,32 @@
     </bean>
 
 
-
-    <!--AOP
-    <bean id="myLogger" class="com.itvdn.aspects.MyLogger"/>
-    <bean id="securityAspect" class="com.itvdn.aspects.SecurityAspect"/>
-
-    <bean id="userAuthorized" class="com.itvdn.model.Authorization" scope="session" lazy-init="false">
-        <property name="authorized" value="false"/>
-    </bean>
-
+    <bean id="logger" class="courseProject.aspects.Logger"/>
     <aop:config>
-        <aop:pointcut id="helloITVDNControllerPointCut" expression="execution(* com.itvdn.controllers.HelloITVDNController.*(..))"/>
+        <aop:pointcut id="journalControllerPointCut" expression="execution(* courseProject.controllers.JournalController.*(..))"/>
+        <aop:pointcut id="userControllerPointCut" expression="execution(* courseProject.controllers.UserController.*(..))"/>
+        <aop:pointcut id="profileControllerPointCut" expression="execution(* courseProject.controllers.ProfileController.*(..))"/>
 
-        <aop:aspect ref="securityAspect" id="securityChecker">
-            <aop:before method="checkAuthorize"
-                        pointcut="execution(* com.itvdn.controllers.HelloITVDNController.*(..))
-                        &amp;&amp; !execution(* com.itvdn.controllers.HelloITVDNController.authorize(..))
-                        &amp;&amp; !execution(* com.itvdn.controllers.HelloITVDNController.unAuthorize(..))
-                        &amp;&amp; !execution(* com.itvdn.controllers.HelloITVDNController.helloITVDN(..))" />
-        </aop:aspect>
-
-        <aop:aspect ref="myLogger" id="myAspect">
-            <aop:before method="beforeMethodInvocation" pointcut-ref="helloITVDNControllerPointCut" />
-            <aop:after-returning method="afterReturn" pointcut="execution(* com.itvdn.persistence.dao.repositories.EmployeeRepository.*(..)) and args(result)"/>
-            <aop:after-throwing method="afterThrowing" throwing="ex"
-                                pointcut="within(@org.springframework.web.bind.annotation.RequestMapping *)"/>
+        <aop:aspect ref="logger" id="myAspect">
+            <aop:before method="beforeMethodInvocation" pointcut-ref="journalControllerPointCut" />
+            <aop:after-returning method="afterReturn" pointcut="execution(* courseProject.persistence.dao.repositories
+            .JournalRepository.*(..)) and args(result)"/>
+            <aop:before method="beforeMethodInvocation" pointcut-ref="userControllerPointCut" />
+            <aop:after-returning method="afterReturn" pointcut="execution(* courseProject.persistence.dao.repositories
+            .UserRepository.*(..)) and args(result)"/>
+            <aop:before method="beforeMethodInvocation" pointcut-ref="profileControllerPointCut" />
+            <aop:after-returning method="afterReturn" pointcut="execution(* courseProject.persistence.dao.repositories
+            .ProfileRepository.*(..)) and args(result)"/>
         </aop:aspect>
     </aop:config>
-    AOP-->
 
-    <!--Spring_security-->
+
     <security:global-method-security pre-post-annotations="enabled"/>
     <security:http auto-config="true" use-expressions="true">
         <security:csrf disabled="true"/>
 
         <security:intercept-url pattern="/journal/**" access="hasAnyAuthority('ROLE_USER', 'ROLE_ADMIN')"/>
+        <security:intercept-url pattern="/profile/**" access="hasAnyAuthority('ROLE_USER', 'ROLE_ADMIN')"/>
 
         <security:intercept-url pattern="/**" access="permitAll"/>
         <security:form-login login-page="/login" username-parameter="username" password-parameter="password"
@@ -77,7 +66,7 @@
         <security:logout logout-success-url="/"/>
         <security:remember-me/>
     </security:http>
-    <!---->
+
     <security:authentication-manager>
         <security:authentication-provider>
             <security:jdbc-user-service data-source-ref="dataSource"

@@ -34,6 +34,7 @@ public class JournalController {
 
     @GetMapping(value = "/remove/{id}")
     public ModelAndView deleteJournal(@PathVariable long id, ModelAndView modelAndView) throws InterruptedException {
+        journalService.unSubscribeAllUsers(id);
         journalService.removeById(id);
         modelAndView.setViewName("redirect:/journal/all");
         return modelAndView;
