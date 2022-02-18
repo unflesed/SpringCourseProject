@@ -1,25 +1,16 @@
 <html>
 <head>
-    <style>
-        div.block{
-            display:inline-block;
-            padding:5px;
-            margin:5px;
-        }
-        div.block:hover{
-            margin:5px;
-            padding:5px;
-        }
-    </style>
+    <style><%@include file="/CSS/index.css"%></style>
 </head>
 <body>
-<h2>You are welcome!</h2>
-<div class="block">
-    <a href="/login">Login</a>
+<div style="text-align: center;">
+    <h1>You are welcome!</h1>
+    <div class="block">
+        <a href="/login">Login</a>
+    </div>
+    <div class="block">
+        <a href="/registration">Registration</a>
+    </div>
 </div>
-<div class="block">
-    <a href="/registration">Registration</a>
-</div>
-
 </body>
 </html>
