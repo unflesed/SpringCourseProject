@@ -5,142 +5,196 @@
 <html>
 <head>
     <title>Journals</title>
-    <style>
-        div.block{
-            display:inline-block;
-            padding:5px;
-            margin:5px;
-        }
-        div.block:hover{
-            margin:5px;
-            padding:5px;
-        }
-    </style>
+    <style><%@include file="/CSS/journals.css"%></style>
 </head>
 <body>
 
-<h1>Journals : </h1>
-<table>
-    <thead>
-    <tr>
-        <th>#</th>
-        <th>Id</th>
-        <th>Journal name</th>
-        <th>Genre</th>
-        <th>Periodicity</th>
-        <th>Cost</th>
-    </tr>
-    </thead>
-    <tbody>
-    <c:forEach items="${journals}" var="journal" varStatus="status">
-        <tr>
-            <td>${status.index + 1}</td>
-            <td>${journal.id}</td>
-            <td>${journal.journalName}</td>
-            <td>${journal.genre}</td>
-            <td>${journal.periodicity}</td>
-            <td>${journal.cost}</td>
-            <td>
-                <form action="/journal/subscribe/${journal.id}" method="post">
-                    <input type="submit" name="button" value="Subscribe"/>
-                </form>
-            </td>
-            <td>
-                <form action="/journal/unsubscribe/${journal.id}" method="post">
-                    <input type="submit" name="button" value="Unsubscribe"/>
-                </form>
-            </td>
-            <td>
-                <sec:authorize access="hasAuthority('ROLE_ADMIN')">
-                <a href="/journal/remove/${journal.id}">Remove</a>
-                </sec:authorize>
-            </td>
-        </tr>
-    </c:forEach>
-    </tbody>
-</table>
-<br/>
-<div class="block">
-    <a href="/journal/subscriptions/">My subscriptions</a>
+<div id ="header">
+    <h1>List of available journals : </h1>
 </div>
-<div class="block">
-    <a href="/profile/my">My profile</a>
+<!-- Main table -->
+<div id ="table1">
+    <table id="t1">
+        <thead>
+        <tr>
+            <th>№</th>
+            <th>Id</th>
+            <th>Journal name</th>
+            <th>Genre</th>
+            <th>Periodicity</th>
+            <th>Cost, $</th>
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach items="${journals}" var="journal" varStatus="status">
+            <tr>
+                <td class="td1">${status.index + 1}</td>
+                <td class="td1">${journal.id}</td>
+                <td class="td2">${journal.journalName}</td>
+                <td class="td2">${journal.genre}</td>
+                <td class="td2">${journal.periodicity}</td>
+                <td class="td1">${journal.cost}</td>
+                <td>
+                    <a class="group2" href="/journal/subscribe/${journal.id}">Subscribe</a>
+                </td>
+                <td>
+                    <a class="group2" href="/journal/unsubscribe/${journal.id}">Unsubscribe</a>
+                </td>
+                <td>
+                    <sec:authorize access="hasAuthority('ROLE_ADMIN')">
+                        <a class="group2" href="/journal/remove/${journal.id}">Remove</a>
+                    </sec:authorize>
+                </td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
+
 </div>
-<br/>
+<!-- Menu -->
+<nav class="menu">
+    <ul>
+        <li><a class="group1" href="/journal/subscriptions/">My subscriptions</a></li>
+        <li><a class="group1" href="#open1">Add new journal</a></li>
+        <li><a class="group1" href="#open3">Find by genre</a></li>
+        <li><a class="group1" href="#open2">Update journal</a></li>
+        <li><a class="group1" href="/profile/my">My profile</a></li>
+        <li><a class="group1" href="/logout">Logout</a></li>
+    </ul>
+</nav>
+<!-- Popup add journal -->
+<div id="open1" class="popup">
+    <div class="popup-dialog">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h3 class="popup-title">To add new journal fill in the form and press "Add" button</h3>
+                <a href="#close" title="Close" class="close">×</a>
+            </div>
+            <div class="popup-body">
+                <form method="POST" action="/journal/add">
+                    <table>
+                        <tr>
+                            <td><label for="journalName">Journal name</label></td>
+                            <td><input type="text" name="journalName" id="journalName"/></td>
+                        </tr>
+                        <tr>
+                            <td><label for="genre">Genre</label></td>
+                            <td><input type="text" name="genre" id="genre"/></td>
+                        </tr>
+                        <tr>
+                            <td><label for="periodicity">Periodicity</label></td>
+                            <td><input type="text" name="periodicity" id="periodicity"/></td>
+                        </tr>
+                        <tr>
+                            <td><label for="cost">Cost</label></td>
+                            <td><input type="number" name="cost" id="cost"/></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="submit" value="Add">
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
-<h2>To add new journal press "Add" button</h2>
-<form method="POST" action="/journal/add">
-    <table>
-        <tr>
-            <td><label for="journalName">Journal name</label></td>
-            <td><input type="text" name="journalName" id="journalName"/></td>
-        </tr>
-        <tr>
-            <td><label for="genre">Genre</label></td>
-            <td><input type="text" name="genre" id="genre"/></td>
-        </tr>
-        <tr>
-            <td><label for="periodicity">Periodicity</label></td>
-            <td><input type="text" name="periodicity" id="periodicity"/></td>
-        </tr>
-        <tr>
-            <td><label for="cost">Cost</label></td>
-            <td><input type="number" name="cost" id="cost"/></td>
-        </tr>
-        <tr>
-            <td>
-                <input type="submit" value="Add">
-            </td>
-        </tr>
-    </table>
-</form>
+<!-- Popup update journal -->
+<div id="open2" class="popup">
+    <div class="popup-dialog">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h3 class="popup-title">To update journal input it's Id, new params and press "Update" button</h3>
+                <a href="#close" title="Close" class="close">×</a>
+            </div>
+            <div class="popup-body">
+                <form method="POST" action="/journal/update">
+                    <table>
+                        <tr>
+                            <td><label for="id">Id</label></td>
+                            <td><input type="number" name="id" id="id"/></td>
+                        </tr>
+                        <tr>
+                            <td><label for="journalName">Journal name</label></td>
+                            <td><input type="text" name="journalName" id="journalName"/></td>
+                        </tr>
+                        <tr>
+                            <td><label for="genre">Genre</label></td>
+                            <td><input type="text" name="genre" id="genre"/></td>
+                        </tr>
+                        <tr>
+                            <td><label for="periodicity">Periodicity</label></td>
+                            <td><input type="text" name="periodicity" id="periodicity"/></td>
+                        </tr>
+                        <tr>
+                            <td><label for="cost">Cost</label></td>
+                            <td><input type="number" name="cost" id="cost"/></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="submit" value="Update">
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
-<br/><br/>
-<h2>To update journal input it's Id, new params and press "Update" button</h2>
-<form method="POST" action="/journal/update">
-    <table>
-        <tr>
-            <td><label for="id">Id</label></td>
-            <td><input type="number" name="id" id="id"/></td>
-        </tr>
-        <tr>
-            <td><label for="journalName">Journal name</label></td>
-            <td><input type="text" name="journalName" id="journalName"/></td>
-        </tr>
-        <tr>
-            <td><label for="genre">Genre</label></td>
-            <td><input type="text" name="genre" id="genre"/></td>
-        </tr>
-        <tr>
-            <td><label for="periodicity">Periodicity</label></td>
-            <td><input type="text" name="periodicity" id="periodicity"/></td>
-        </tr>
-        <tr>
-            <td><label for="cost">Cost</label></td>
-            <td><input type="number" name="cost" id="cost"/></td>
-        </tr>
-        <tr>
-            <td>
-                <input type="submit" value="Update">
-            </td>
-        </tr>
-    </table>
-</form>
-
-<br/><br/>
-<h2>Input genre to find all journals of appropriate genre and press "Search" button</h2>
-<form method="POST" action="/journal/findByGenre">
-    <table>
-        <tr>
-            <td><label for="genre">Genre</label></td>
-            <td><input type="text" name="genre"/></td>
-        </tr>
-        <tr>
-            <td>
-                <input type="submit" value="Search">
-            </td>
-        </tr>
-    </table>
-</form>
+<!-- Popup find journal by genre -->
+<div id="open3" class="popup">
+    <div class="popup-dialog">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h3 class="popup-title">Input genre to find all journals of appropriate genre and press "Search" button</h3>
+                <a href="#close" title="Close" class="close">×</a>
+            </div>
+            <div class="popup-body">
+                <form method="POST" action="/journal/findByGenre">
+                    <table>
+                        <tr>
+                            <td><label for="genre">Genre</label></td>
+                            <td><input type="text" name="genre"/></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="submit" value="Search">
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Popup find journal by genre -->
+<div id="open4" class="popup">
+    <div class="popup-dialog">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h3 class="popup-title">You subscribed journal:</h3>
+                <a href="#close" title="Close" class="close">×</a>
+            </div>
+            <div class="popup-body">
+                <form method="POST" action="/journal/findByGenre">
+                    <table>
+                        <tr>
+                            <td><label for="genre">Genre</label></td>
+                            <td><input type="text" name="genre"/></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="submit" value="Search">
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

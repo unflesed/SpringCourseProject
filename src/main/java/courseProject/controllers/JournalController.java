@@ -69,7 +69,7 @@ public class JournalController {
 
         return modelAndView;
     }
-    @PostMapping(value = "/subscribe/{id}")
+    @GetMapping(value = "/subscribe/{id}")
     public String subscribe(@PathVariable long id) {
         String userName;
         userName = SecurityContextHolder.getContext().getAuthentication().getName();
@@ -80,7 +80,7 @@ public class JournalController {
         return "subscribed";
     }
 
-    @PostMapping(value = "/unsubscribe/{id}")
+    @GetMapping(value = "/unsubscribe/{id}")
     public String unSubscribe(@PathVariable long id) {
         String userName;
         userName = SecurityContextHolder.getContext().getAuthentication().getName();
