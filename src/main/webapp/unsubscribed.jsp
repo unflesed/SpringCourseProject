@@ -7,7 +7,7 @@
 </head>
 <body>
 <h1>You have unsubscribed from the journal! </h1>
-
+<br/>
 <button type="button"
         onclick='window.location.pathname="journal/all"'>back</button>
 </body>

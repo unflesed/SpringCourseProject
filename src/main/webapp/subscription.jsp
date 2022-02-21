@@ -3,12 +3,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Warning!</title>
+    <title>Successful subscription!</title>
 </head>
 <body>
-<h1>You've already subscribed on this journal! </h1>
+<h1>You have successfully subscribed to the journal!</h1>
 <br/>
 <button type="button"
-        onclick='window.location.pathname="journal/all"'>back</button>
+        onclick='window.location.pathname="journal/all"'>Ok!</button>
 </body>
 </html>

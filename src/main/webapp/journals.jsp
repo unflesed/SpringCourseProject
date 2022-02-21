@@ -175,7 +175,7 @@
     <div class="popup-dialog">
         <div class="popup-content">
             <div class="popup-header">
-                <h3 class="popup-title">You subscribed journal:</h3>
+                <h3 class="popup-title">Input genre to find all journals of appropriate genre and press "Search" button</h3>
                 <a href="#close" title="Close" class="close">×</a>
             </div>
             <div class="popup-body">

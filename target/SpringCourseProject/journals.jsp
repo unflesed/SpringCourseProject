@@ -170,5 +170,31 @@
         </div>
     </div>
 </div>
+<!-- Popup find journal by genre -->
+<div id="open4" class="popup">
+    <div class="popup-dialog">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h3 class="popup-title">Input genre to find all journals of appropriate genre and press "Search" button</h3>
+                <a href="#close" title="Close" class="close">×</a>
+            </div>
+            <div class="popup-body">
+                <form method="POST" action="/journal/findByGenre">
+                    <table>
+                        <tr>
+                            <td><label for="genre">Genre</label></td>
+                            <td><input type="text" name="genre"/></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="submit" value="Search">
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

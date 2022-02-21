@@ -75,7 +75,7 @@ public class JournalController {
         userName = SecurityContextHolder.getContext().getAuthentication().getName();
         if (!journalService.checkSubscription(userName, id)) {
             journalService.subscribeJournal(userName, id);
-            return "redirect:/journal/all";
+            return "subscription";
         }
         return "subscribed";
     }
@@ -86,10 +86,5 @@ public class JournalController {
         userName = SecurityContextHolder.getContext().getAuthentication().getName();
         journalService.unSubscribeJournal(userName, id);
         return "unsubscribed";
-    }
-
-    @GetMapping(value = "/popup")
-    public String popup(){
-        return "popup";
     }
 }

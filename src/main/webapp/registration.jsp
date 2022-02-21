@@ -23,6 +23,22 @@
             <td><input type="password" name="password" id="password"/></td>
         </tr>
         <tr>
+            <td><label for="First Name">First Name</label></td>
+            <td><input type="text" name="First Name" id="First Name"/></td>
+        </tr>
+        <tr>
+            <td><label for="Last Name">Last Name</label></td>
+            <td><input type="text" name="Last Name" id="Last Name"/></td>
+        </tr>
+        <tr>
+            <td><label for="phone">Phone</label></td>
+            <td><input type="text" name="phone" id="phone"/></td>
+        </tr>
+        <tr>
+            <td><label for="email">Email</label></td>
+            <td><input type="text" name="email" id="email"/></td>
+        </tr>
+        <tr>
             <td>
                 <input type="submit" value="Register">
             </td>
