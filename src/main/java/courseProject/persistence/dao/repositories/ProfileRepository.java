@@ -17,8 +17,8 @@ public interface ProfileRepository extends CrudRepository<Profile, Long> {
             nativeQuery = true)
     Profile findProfileByUserName(String userName);
     @Modifying
-    @Query(value = "update profile p join users u on p.id = u.profile_id set p.first_name = ?2, " +
-            "p.last_name = ?3, p.phone = ?4, p.email = ?5 where username = ?1",
+    @Query(value = "update profile p set p.first_name = ?2, " +
+            "p.last_name = ?3, p.phone = ?4, p.email = ?5 where id = ?1",
             nativeQuery = true)
-    void updateProfile(String userName, String firstName, String lastName, String phone, String email);
+    void updateProfile(Long idProfile, String firstName, String lastName, String phone, String email);
 }

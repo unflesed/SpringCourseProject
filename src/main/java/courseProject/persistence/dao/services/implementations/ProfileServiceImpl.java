@@ -15,8 +15,8 @@ public class ProfileServiceImpl implements ProfileService {
     }
 
     @Override
-    public void updateProfile(String userName, String firstName, String lastName, String phone, String email) {
-        profileRepository.updateProfile(userName, firstName, lastName, phone, email);
+    public void updateProfile(Long idProfile, String firstName, String lastName, String phone, String email) {
+        profileRepository.updateProfile(idProfile, firstName, lastName, phone, email);
     }
 
     @Override

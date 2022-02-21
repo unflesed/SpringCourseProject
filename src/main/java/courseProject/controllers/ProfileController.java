@@ -37,12 +37,8 @@ public class ProfileController {
         String userName;
         userName = SecurityContextHolder.getContext().getAuthentication().getName();
         Profile profile = userDetailsService.getUserByLogin(userName).getProfile();
-        if (profile == null) {
-            profile = profileService.saveProfile(firstName, lastName, phone, email);
-            userDetailsService.updateUser(userName, profile.getId());
-        }else {
-            profileService.updateProfile(userName, firstName, lastName, phone, email);
-        }
+        profileService.updateProfile(profile.getId(), firstName, lastName, phone, email);
+
         modelAndView.setViewName("redirect:/profile/my");
 
         return modelAndView;
