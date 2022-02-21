@@ -8,11 +8,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Registration</title>
+    <style><%@include file="/CSS/registration.css"%></style>
 </head>
 <body>
-<h2>To add new journal press "Add" button</h2>
-<form method="POST" action="/registration/add">
+
+<h2>To register enter all info and press "Register" button</h2>
+<form class="registration" method="POST" action="/registration/add">
     <table>
         <tr>
             <td><label for="login">Login</label></td>

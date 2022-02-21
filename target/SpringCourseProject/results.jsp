@@ -6,10 +6,10 @@
     <title>Search result</title>
 </head>
 <body>
-<h1>List of journals : </h1>
+<h1>List of journals found by genre: </h1>
 
 <c:forEach items="${journals}" var="journal" varStatus="status">
-    <p><h2>Result #${status.index + 1}</h2> ${journal}</p>
+    <p><h2>Result №${status.index + 1}</h2> ${journal}</p>
 </c:forEach>
 
 <button type="button"

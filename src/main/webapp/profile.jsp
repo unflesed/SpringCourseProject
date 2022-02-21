@@ -8,21 +8,33 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Profile</title>
+    <style><%@include file="/CSS/profile.css"%></style>
 </head>
 <body>
-<h2>My profile:</h2>
+<h1>My profile</h1>
 <br/>
-<label>First name</label>${profile.firstName}
-<br/>
-<label>Last name</label>${profile.lastName}
-<br/>
-<label>Phone</label>${profile.phone}
-<br/>
-<label>Email</label>${profile.email}
+<div class="block">
+    <label>First name:</label>
+    <div class="firstName"><strong>${profile.firstName}</strong></div>
+    <br/>
+    <label>Last name:</label>
+    <div class="lastName"><strong>${profile.lastName}</strong></div>
+    <br/>
+    <label>Phone:</label>
+    <div class="phone"><strong>${profile.phone}</strong></div>
+    <br/>
+    <label>Email:</label>
+    <div class="email"><strong>${profile.email}</strong></div>
+</div>
+
 <br/><br/>
-<h2>To update or save profile input new params and press "Update" button</h2>
-<form method="POST" action="/profile/update">
+<div class="h">
+    <h3>To update or save profile input new params </h3>
+    <h3>and press "Update/Save" button</h3>
+</div>
+
+<form class="form" method="POST" action="/profile/update">
     <table>
         <tr>
             <td><label for="firstName">First name</label></td>
@@ -54,3 +66,4 @@
         onclick='window.location.pathname="journal/all"'>back</button>
 </body>
 </html>
+

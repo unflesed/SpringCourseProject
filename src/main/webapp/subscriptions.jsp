@@ -4,12 +4,13 @@
 <html>
 <head>
     <title>Subscriptions</title>
+    <style><%@include file="/CSS/subscribed.css"%></style>
 </head>
 <body>
 <h1>List of your subscriptions: </h1>
 
 <c:forEach items="${journals}" var="journal" varStatus="status">
-    <p><h2>Result #${status.index + 1}</h2> ${journal}</p>
+    <p><h2>Subscription №${status.index + 1}</h2> ${journal}</p>
 </c:forEach>
 
 <button type="button"

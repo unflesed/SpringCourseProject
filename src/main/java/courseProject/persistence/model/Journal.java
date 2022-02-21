@@ -23,4 +23,13 @@ public class Journal {
 
     public Journal() {
     }
+
+    @Override
+    public String toString() {
+        return  "id: " + id +
+                ", Journal name: " + journalName +
+                ", Genre: " + genre +
+                ", Periodicity: " + periodicity +
+                ", Cost: " + cost + " $";
+    }
 }

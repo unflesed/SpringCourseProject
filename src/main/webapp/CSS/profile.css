@@ -1,0 +1,37 @@
+body{
+    background-color: #D4E6B3;
+}
+div.block{
+    position: absolute;
+    left: 30px;
+    top: 80px;
+}
+div.h{
+    position: absolute;
+    left: 300px;
+    top: 30px;
+}
+form.form{
+    position: absolute;
+    left: 300px;
+    top: 130px;
+}
+button{
+    position: absolute;
+    top: 350px;
+}
+input[type="submit"], button{
+    color: #fff;
+    outline: none;
+    border: 0;
+    text-decoration: none;
+    user-select: none;
+    background: rgb(212,75,56);
+    padding: .7em 1.5em;
+}
+input[type="submit"]:hover, button:hover {
+    background: rgb(232,95,76);
+}
+input[type="submit"]:active, button:active {
+    background: rgb(152,15,0);
+}

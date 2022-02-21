@@ -4,6 +4,7 @@
 <html>
 <head>
     <title>Successful subscription!</title>
+    <style><%@include file="/CSS/subscribed.css"%></style>
 </head>
 <body>
 <h1>You have successfully subscribed to the journal!</h1>

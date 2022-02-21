@@ -4,6 +4,7 @@
 <html>
 <head>
     <title>Warning!</title>
+    <style><%@include file="/CSS/subscribed.css"%></style>
 </head>
 <body>
 <h1>You have unsubscribed from the journal! </h1>
