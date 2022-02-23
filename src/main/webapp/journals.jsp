@@ -55,9 +55,13 @@
 <nav class="menu">
     <ul>
         <li><a class="group1" href="/journal/subscriptions/">My subscriptions</a></li>
-        <li><a class="group1" href="#open1">Add new journal</a></li>
+        <sec:authorize access="hasAuthority('ROLE_ADMIN')">
+            <li><a class="group1" href="#open1">Add new journal</a></li>
+        </sec:authorize>
         <li><a class="group1" href="#open3">Find by genre</a></li>
-        <li><a class="group1" href="#open2">Update journal</a></li>
+        <sec:authorize access="hasAuthority('ROLE_ADMIN')">
+            <li><a class="group1" href="#open2">Update journal</a></li>
+        </sec:authorize>
         <li><a class="group1" href="/profile/my">My profile</a></li>
         <li><a class="group1" href="/logout">Logout</a></li>
     </ul>

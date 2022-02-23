@@ -4,6 +4,7 @@
 <html>
 <head>
     <title>Subscriptions</title>
+    <style><%@include file="/CSS/subscribed.css"%></style>
 </head>
 <body>
 <h1>List of your subscriptions: </h1>

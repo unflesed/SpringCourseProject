@@ -4,10 +4,10 @@
 <html>
 <head>
     <title>Search result</title>
+    <style><%@include file="/CSS/results.css"%></style>
 </head>
 <body>
 <h1>List of journals found by genre: </h1>
-
 <c:forEach items="${journals}" var="journal" varStatus="status">
     <p><h2>Result №${status.index + 1}</h2> ${journal}</p>
 </c:forEach>

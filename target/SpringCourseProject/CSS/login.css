@@ -1,0 +1,24 @@
+body{
+    background-color: #D4E6B3;
+}
+div.block{
+    text-align: center;
+}
+p{
+    padding: 1px;
+}
+input[type="submit"]{
+    color: #fff;
+    outline: none;
+    border: 0;
+    text-decoration: none;
+    user-select: none;
+    background: rgb(212,75,56);
+    padding: .7em 1.5em;
+}
+input[type="submit"]:hover {
+    background: rgb(232,95,76);
+}
+input[type="submit"]:active {
+    background: rgb(152,15,0);
+}

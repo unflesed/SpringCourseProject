@@ -9,10 +9,12 @@
 <html>
 <head>
     <title>Registration</title>
+    <style><%@include file="/CSS/registration.css"%></style>
 </head>
 <body>
+
 <h2>To register enter all info and press "Register" button</h2>
-<form method="POST" action="/registration/add">
+<form class="registration" method="POST" action="/registration/add">
     <table>
         <tr>
             <td><label for="login">Login</label></td>
